@@ -1,4 +1,4 @@
-import { binance } from "../index.js";
+//import { binance } from "../index.js";
 
 export const placeOrder = async (req, res) => {
   let orders = [
@@ -36,6 +36,11 @@ export const getOpenOrders = async (req, res) => {
 export const limitBuy = async (req, res) => {
   const buy = await binance.futuresBuy("BTCUSDT", 0.1, 8222);
   res.status(201).json(buy);
+};
+
+export const stream = async (req, res) => {
+  const s = binance.futuresBookTickerStream("BTCUSDT", console.log);
+  res.status(201).json(s);
 };
 /*
 return await binance.futuresGetDataStream();
